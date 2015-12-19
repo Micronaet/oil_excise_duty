@@ -44,6 +44,7 @@ class oil_duty_register(osv.osv):
     ''' 
     _name = 'oil.duty.register'
     _description = 'Oil duty register'
+    _order = 'start_date desc'
     
     _columns = {
         'name': fields.char('Registry', required=True, 
@@ -51,7 +52,7 @@ class oil_duty_register(osv.osv):
         'note': fields.text('Registry note'),
         'start_date': fields.date('Period start date'),
         }
-    
+
     _defaults = {
         'start_date': lambda *x: datetime.now().strftime(
             '%Y-%m-01'),
