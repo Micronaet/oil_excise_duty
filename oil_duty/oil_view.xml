@@ -115,9 +115,45 @@
                 </xpath>
             </field>
         </record>
+        
+        <!--res.company-->
+        <record model="ir.ui.view" id="view_res_company_duty_form">
+            <field name="name">res.company.duty.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form" />
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page" position="after">
+                    <page string="Duty">
+                        <field name="duty_ids">
+                            <tree string="Duty parameters">
+                                <field name="duty_year" />
+                                <field name="duty_code" />
+                                <field name="duty_user_code" />
+                                <field name="duty_id_company" />
+                            </tree>
+                            <form string="Duty parameters">
+                                <sheet>
+                                    <group colspan="4" col="4">
+                                        <field name="duty_year" />
+                                        <field name="duty_code" />
+                                        <field name="duty_user_code" />
+                                        <field name="duty_flow_name" />
+                                        <field name="duty_id_company" />
+                                        <field name="duty_office_name" />
+                                        <field name="duty_office_code" />
+                                        <field name="duty_protocol_number" />
+                                        <field name="duty_excise" />
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>                        
+                    </page>
+                </xpath>                
+            </field>
+        </record>
 
-       <menuitem action="action_product_product_duty" id="menuitem_products_duty" parent="base.menu_product" sequence="20" name="Product code for duty" />
-       <menuitem action="action_product_product_protocol_duty" id="menuitem_products_protocol_duty" parent="base.menu_product" sequence="30" name="Product protocol for duty" />
+        <menuitem action="action_product_product_duty" id="menuitem_products_duty" parent="base.menu_product" sequence="20" name="Product code for duty" />
+        <menuitem action="action_product_product_protocol_duty" id="menuitem_products_protocol_duty" parent="base.menu_product" sequence="30" name="Product protocol for duty" />
     </data>
 </openerp>
 

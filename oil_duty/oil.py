@@ -88,6 +88,41 @@ class res_partner(osv.osv):
     
     _columns = {
         'has_duty': fields.boolean('Has duty'),
-        'duty_code': fields.char('Duty code', size=25),
+        'duty_code': fields.char('Duty code', size=25), # 13
+        
+        # Company fields:
+        
+        }
+class res_company_duty(osv.osv):
+    ''' Add duty fields
+    ''' 
+    _name = 'res.company.duty'
+    
+    _columns = {
+        'company_id': fields.many2one('res.company', 'Duty'), 
+        
+        # TODO required all?
+        'duty_year': fields.char('Year', size=4, required=True),
+        'duty_code': fields.char('Duty code', size=13),
+        'duty_user_code': fields.char('Duty user code', size=4),
+        'duty_flow_name': fields.char('Duty user code', size=12, 
+            help='User code + Date MM + "." + interchange type (1) + '
+                'Progr. interchange (2)'),
+        'duty_id_company': fields.char('Company ID', size=3),
+        'duty_office_name': fields.char('Office name', size=50),
+        'duty_office_code': fields.char('Office code', size=20),
+        'duty_protocol_number': fields.char('Prot. #', size=20),
+        'duty_excise': fields.char('Excise', size=20),                
+        
+        }
+
+class res_company(osv.osv):
+    ''' Add duty fields
+    ''' 
+    _inherit = 'res.company'
+    
+    _columns = {
+        'duty_ids': fields.one2many(
+            'res.company.duty', 'company_id', 'Duty'), 
         }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
