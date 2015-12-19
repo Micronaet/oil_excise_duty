@@ -1,3 +1,4 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
 "access_product_product_duty_user","product.product.duty","model_product_product_duty","base.group_user",1,1,1,1
-
+"access_res_company_duty_user","res.company.duty","model_res_company_duty","base.group_user",1,1,1,1
+"access_res_company_excise_user","res.company.excise","model_res_company_excise","base.group_user",1,1,1,1

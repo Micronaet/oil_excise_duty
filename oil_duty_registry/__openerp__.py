@@ -18,24 +18,26 @@
 ###############################################################################
 
 {
-    'name': 'Oil duty',
+    'name': 'Oil duty registry',
     'version': '0.1',
     'category': 'Duty',
     'description': '''        
-        Extra data for manage oil duty
+        Oil duty registry (tables) form manage presentation
         ''',
     'author': 'Micronaet S.r.l. - Nicola Riolini',
     'website': 'http://www.micronaet.it',
     'license': 'AGPL-3',
     'depends': [
         'base',
-        'product',
+        'oil_duty',
         ],
     'init_xml': [],
     'demo': [],
     'data': [
+        'security/duty_group.xml',
         'security/ir.model.access.csv',    
-        'oil_view.xml',
+        
+        'registry_view.xml',
         ],
     'active': False,
     'installable': True,

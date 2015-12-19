@@ -124,6 +124,7 @@
             <field name="arch" type="xml">
                 <xpath expr="/form/sheet/notebook/page" position="after">
                     <page string="Duty">
+                        <separator string="Company parameter:" colspan="4" />
                         <field name="duty_ids">
                             <tree string="Duty parameters">
                                 <field name="duty_year" />
@@ -147,6 +148,13 @@
                                 </sheet>
                             </form>
                         </field>                        
+                        <separator string="Excise variation:" colspan="4"/>
+                        <field name="excise_ids">
+                            <tree string="Excise" editable="bottom">
+                                <field name="excise" />
+                                <field name="from_date" />
+                            </tree>
+                        </field>    
                     </page>
                 </xpath>                
             </field>

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!--oil.duty.register-->
+        <record model="ir.ui.view" id="view_oil_duty_register_form">
+            <field name="name">oil.duty.register.form</field>
+            <field name="model">oil.duty.register</field>
+            <field name="arch" type="xml">
+                <form string="Registry" version="7.0">
+                    <sheet>
+                        <group colspan="4" col="4">
+                            <field name="name" />
+                            <field name="start_date" readonly="1"/>
+                            <separator string="Note" colspan="4" />
+                            <field name="note" colspan="4" />
+                        </group>    
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_oil_duty_register_tree">
+            <field name="name">oil.duty.register.form</field>
+            <field name="model">oil.duty.register</field>
+            <field name="arch" type="xml">
+                <tree string="Registry" version="7.0">
+                    <field name="name" />
+                    <field name="start_date" />
+                    <field name="note" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_oil_duty_register">
+            <field name="name">Duty registry</field>
+            <field name="res_model">oil.duty.register</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_oil_duty_register_tree"/>
+        </record>    
+
+        <menuitem 
+            id="menuitem_oil_duty_root" 
+            parent="base.menu_base_partner" 
+            sequence="50" 
+            name="Duty management" 
+            groups="group_duty_manager,group_duty_user"
+            />
+            <menuitem 
+                action="action_oil_duty_register" 
+                id="menuitem_oil_duty_register" 
+                parent="menuitem_oil_duty_root" 
+                sequence="10" 
+                name="Registry" 
+                />
+    </data>
+</openerp>
+

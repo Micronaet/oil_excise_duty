@@ -97,6 +97,8 @@ class res_company_duty(osv.osv):
     ''' Add duty fields
     ''' 
     _name = 'res.company.duty'
+    _res_name = 'duty_year'
+    _order = 'duty_year desc'
     
     _columns = {
         'company_id': fields.many2one('res.company', 'Duty'), 
@@ -116,6 +118,24 @@ class res_company_duty(osv.osv):
         
         }
 
+class res_company_excise(osv.osv):
+    ''' Add duty fields
+    ''' 
+    _name = 'res.company.excise'
+    _rec_name = 'excise'
+    _order = 'from_date desc'
+    
+    _columns = {
+        'company_id': fields.many2one('res.company', 'Duty'), 
+        'excise': fields.float('Excise', digits=(16, 6), required=True), 
+        'from_date': fields.date('From date', required=True),
+        }
+        
+    _defaults = {
+        'from_date': lambda *x: datetime.now().strftime(
+            DEFAULT_SERVER_DATE_FORMAT),
+        }    
+
 class res_company(osv.osv):
     ''' Add duty fields
     ''' 
@@ -124,5 +144,7 @@ class res_company(osv.osv):
     _columns = {
         'duty_ids': fields.one2many(
             'res.company.duty', 'company_id', 'Duty'), 
+        'excise_ids': fields.one2many(
+            'res.company.excise', 'company_id', 'Excise'), 
         }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
