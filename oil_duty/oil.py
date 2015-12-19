@@ -52,9 +52,12 @@ class product_product_duty(osv.osv):
         'type': fields.selection([
             ('code', 'Code'),
             ('protocol', 'Protocol'),
-            ], 'Type ofvalue', 
+            ], 'Type of value', 
             help='Used for keep only one table and save 2 type of value'),
         }
+    _defaults = {
+        'type': lambda *x: 'code',
+        }    
     
 class product_product_adr(osv.osv):
     ''' Extra fields for ETL in product.product
@@ -62,19 +65,20 @@ class product_product_adr(osv.osv):
     _inherit = 'product.product'
     
     _columns = {
+        'duty_mineral_oil': fields.boolean('Mineral oil'),
         'duty_id': fields.many2one('product.product.duty', 'Duty', 
             domain=[('type', '=', 'code')]),
+        'protocol_id': fields.many2one('product.product.duty', 'Protocol',
+            domain=[('type', '=', 'protocol')]),
         'duty_type_reg': fields.selection([
             ('M', 'Material'),
             ('F', 'Product'),
             ], 'Duty reg. type'),
-        'duty_type_store: fields.selection([
+        'duty_type_store': fields.selection([
             ('C', 'C'),
             ], 'Type of store'),
         'duty_oil_perc': fields.float(
             'Oil %', digits=(16, 4)),
-        'protocol_id': fields.many2one('product.product.duty', 'Duty',
-            domain=[('type', '=', 'protocol')]),
         }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
