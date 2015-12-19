@@ -81,4 +81,13 @@ class product_product_adr(osv.osv):
             'Oil %', digits=(16, 4)),
         }
 
+class res_partner(osv.osv):
+    ''' Add duty fields
+    ''' 
+    _inherit = 'res.partner'
+    
+    _columns = {
+        'has_duty': fields.boolean('Has duty'),
+        'duty_code': fields.char('Duty code', size=25),
+        }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

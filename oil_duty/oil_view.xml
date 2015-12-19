@@ -92,6 +92,30 @@
             </field>
         </record>
 
+        <!--res.partner-->
+        <record model="ir.ui.view" id="view_res_partner_duty_form">
+            <field name="name">res.partner.duty.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <field name="email" position="after">
+                    <field name="has_duty" />
+                    <field name="duty_code" attrs="{'invisible': [('has_duty','=',False)]}"/>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_res_partner_duty_search">
+            <field name="name">res.partner.duty.search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//filter" position="before">
+                    <field name="duty_code"/>                
+                    <filter name="is_duty_partner" string="Has Duty" domain="[('has_duty','=',True)]"/>
+                </xpath>
+            </field>
+        </record>
+
        <menuitem action="action_product_product_duty" id="menuitem_products_duty" parent="base.menu_product" sequence="20" name="Product code for duty" />
        <menuitem action="action_product_product_protocol_duty" id="menuitem_products_protocol_duty" parent="base.menu_product" sequence="30" name="Product protocol for duty" />
     </data>
