@@ -59,9 +59,11 @@
                     <label for="duty_mineral_oil"/>
                 </field>
                 <xpath expr="/form/sheet/notebook/page[@string='Information']" position="after">
-                    <page string="Duty" attrs="{'invisible': [('duty_mineral_oil','=',False)]}">
+                    <page string="Duty">
                        <group colspan="4" col="4">
                             <field name="duty_id" context="{'default_type':'code'}" />
+                       </group>
+                       <group colspan="4" col="4" attrs="{'invisible': [('duty_mineral_oil','=',False)]}">
                             <field name="protocol_id" context="{'default_type':'protocol'}"/>
                             <field name="duty_type_reg" />
                             <field name="duty_type_store" />
